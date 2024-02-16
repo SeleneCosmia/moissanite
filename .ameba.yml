@@ -1,0 +1,11 @@
+Documentation/DocumentationAdmonition:
+  Enabled: false
+
+Lint/UselessAssign:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Naming/BlockParameterName:
+  Enabled: false
