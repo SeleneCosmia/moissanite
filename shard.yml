@@ -12,6 +12,6 @@ targets:
   moissanite:
     main: src/moissanite.cr
 
-crystal: '>= 1.11.2'
+crystal: 1.11.2
 
 license: MIT
