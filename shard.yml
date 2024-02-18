@@ -1,5 +1,5 @@
 name: moissanite
-version: 0.1.0
+version: 0.1.1
 
 authors:
   - SeleneCosmia <hebe@selenocosmia.space>
@@ -12,6 +12,6 @@ targets:
   moissanite:
     main: src/moissanite.cr
 
-crystal: '>= 1.11.1'
+crystal: '>= 1.11.2'
 
 license: MIT

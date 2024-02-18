@@ -1,19 +1,11 @@
-# moissanite
+<h1 align="center">Moissanite</h1>
 
-TODO: Write a description here
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/SeleneCosmia/moissanite?style=flat&logo=github&label=total%20commits&color=%2398971A&link=https%3A%2F%2Fgithub.com%2FSeleneCosmia%2Fmoissanite%2Fcommits%2Fmaster%2F)
+![Dynamic YAML Badge](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2FSeleneCosmia%2Fmoissanite%2Fmaster%2Fshard.yml&query=%24.crystal&prefix=v&style=flat&logo=crystal&label=crystal&labelColor=1d2021&color=3c3836)
+<hr>
 
-## Installation
 
-TODO: Write installation instructions here
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
-
+---
 ## Contributing
 
 1. Fork it (<https://github.com/your-github-user/moissanite/fork>)
