@@ -12,8 +12,8 @@ targets:
   moissanite:
     main: src/moissanite.cr
 
-crystalline:
-  main: .crystalline_main.cr
+      #crystalline:
+      #main: .crystalline_main.cr
 
 crystal: 1.11.2
 
