@@ -1,7 +1,7 @@
 require "raylib-cr"
 alias Color = Raylib::Color
 
-module Moissanite
+module Moissanite::Theme
     ONYX = Color.new r: 4, g: 4, b: 4, a: 255               #rgb(4,4,4)
     BOULDER = Color.new r: 48, g: 32, b: 31, a: 255         #rgb(48,32,31)
     GARNET = Color.new r: 111, g: 35, b: 51, a: 255         #rgb(111,35,51)

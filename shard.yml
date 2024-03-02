@@ -4,17 +4,14 @@ version: 0.1.2
 authors:
   - SeleneCosmia <hebe@selenocosmia.space>
 
-dependencies:
-  raylib-cr:
-    github: sol-vin/raylib-cr
-
 targets:
   moissanite:
     main: src/moissanite.cr
 
-      #crystalline:
-      #main: .crystalline_main.cr
-
-crystal: 1.11.2
+crystal: ">=1.11.2"
 
 license: MIT
+
+dependencies:
+  raylib-cr:
+    github: sol-vin/raylib-cr
