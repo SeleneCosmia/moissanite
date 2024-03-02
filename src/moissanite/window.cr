@@ -10,7 +10,7 @@ alias Theme = Moissanite::Theme
 
 show_text = false
 
-Rl.init_window(sw, sh, "moissanite.cr")
+Rl.init_window(sw, sh, "Moissanite")
 Rl.set_target_fps(60)
 
 until Rl.close_window?
