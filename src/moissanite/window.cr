@@ -6,32 +6,44 @@ sw = 1920
 sh = 1080
 
 alias Rl = Raylib
-alias Theme = Moissanite::Theme
 
-show_text = false
+module Moissanite
+  class Window
+    include Theme
 
-Rl.init_window(sw, sh, "Moissanite")
-Rl.set_target_fps(60)
+    @win_width : Int32
+    @win_height : Int32
 
-until Rl.close_window?
-  Rl.begin_drawing
-  Rl.clear_background(Rl::RAYWHITE)
-  Rl.draw_rectangle(sw/2 - 120, sh/2, sw/4 - 220, sh/4 - 80, Theme::ONYX)
+    def initialize(@width : Int32, height : Int32)
+      @win_width = @width
+      @win_height = @height
+      Rl.init_window(width, height, "Moissanite")
+      Rl.set_target_fps(60)
+    end
 
-  if Rl.key_pressed?(Rl::KeyboardKey::One)
-    show_text = !show_text
+    def self.setup
+      Rl.set_exit_key()
+    end
+
+    def render
+      Rl.begin_drawing
+
+      Rl.clear_background(Theme::MOONSTONE)
+      Rl.draw_rectangle(
+        sw/2 - 220,  # positionX = ( screen width divided by 2 ) minus 220px
+        sh/2 - 180,  # positionY = ( screen height divided by 2 ) minus 180px
+        420.0,       # Rectangle is 420px wide
+        208.0,       # Rectangle is 208px tall
+        Theme::AMBER # Rectangle fill color = Moissanite::Theme::AMBER
+      )
+      Rl.
+
+      Rl.end_drawing
+    end
+
+    def exit
+      Rl.close_window
+    end
+
   end
-
-  if show_text
-    Rl.draw_rectangle(sw/2 + 250, sh/2 + 64, 554.0, 164.0, Theme::AMBER)
-    Rl.draw_text("You pressed the <1> key!", sw/2 + 300, sh/2 + 34, 34, Rl::DARKBROWN)
-  end
-
-  if Rl.key_pressed_repeat?(Rl::KeyboardKey::One)
-    Rl.clear_background(Rl::RAYWHITE)
-  end
-
-  Rl.end_drawing
 end
-
-Rl.close_window
