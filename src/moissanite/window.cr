@@ -36,7 +36,6 @@ module Moissanite
         208.0,       # Rectangle is 208px tall
         Theme::AMBER # Rectangle fill color = Moissanite::Theme::AMBER
       )
-      Rl.
 
       Rl.end_drawing
     end
