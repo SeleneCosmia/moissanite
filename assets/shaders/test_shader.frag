@@ -1,6 +1,4 @@
-#ifdef GL_ES
-precision mediump float;
-#endif
+precision highp float;
 
 #define TWO_PI 6.28318530718
 
