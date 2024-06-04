@@ -1,9 +1,11 @@
 /.vscode/
 /docs/
+# no need to track dependencies, shards does this for us automatically
 /lib/
 /bin/
 /.shards/
 *.dwarf
+# unused resources
 /resources/sounds/
 resources/imgs/SphinxCatSprites/
 

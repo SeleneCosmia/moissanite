@@ -1,44 +1,68 @@
-require "./colors"
-require "raylib-cr/rlgl"
 require "raylib-cr"
+require "raylib-cr/rlgl"
+require "../moissanite.cr"
+require "./colors"
 
-sw = 1920
-sh = 1080
+module Moissanite
+  module Window
+    alias M = Moissanite
+    alias Theme = M::Theme
 
-alias Rl    = Raylib
-alias Theme = Moissanite::Theme
-alias Key   = Rl::KeyboardKey
-alias Vec2  = Rl::Vector2
-alias Rect  = Rl::Rectangle
+    module Screen
+      SCREEN_WIDTH  = 1920
+      SCREEN_HEIGHT = 1080
+    end
 
-# Init Window
-# ---------------------------------------------------------------------------------------- 
-Rl.init_window(sw, sh, "Moissanite")
-Rl.set_target_fps(60)
+    # Screen width & height definitions
+    class_getter screen_width = Screen::SCREEN_WIDTH
+    class_getter screen_height = Screen::SCREEN_HEIGHT
 
-screen_height = 1080
-screen_width  = 1920
+    # Player animation frame starts from 0
+    class_property current_frame = 0
+    
+    # Character animation set to 8 image frames per second
+    #
+    # TODO: implement an iterator for frame speed opts
+    # something like:
+    # ```   
+    #    frame_speed = 8    
+    # 
+    #  if Rl.is_key_pressed?(someKey here)
+    #    until frame_speed >= 14
+    #      frame_speed += 2
+    #    end
+    #  ?? reset to baseline goes here ??  frame_speed = 8 
+    #  end 
+    #  ?? orrrr here ?? frame_speed = 8
+    class_property frame_speed   = 8
+
+    # Initializes the top level window
+    # 
+    # [!NOTE]: This must be called before anything else can be done with the window. 
+    def self.open
+      Rl.init_window(@@screen_width, @@screen_height, "Moissanite")
+      Rl.set_target_fps 60
+    end
+
+  # ------------------------------------------ UI bars rectangle definitions ------------------------------------------
+    class_getter menubar : Rl::Rectangle = Rect.new(x: 0.0, y: 0.0, width: @@screen_width, height: 40.0)
+    class_getter statusbar : Rl::Rectangle = Rect.new(x: 0.0, y: @@screen_height - 20.0, width: 1920.0, height: 20.0)
+
+    class_getter circle_vec : Rl::Vector2 = Vec2.new(x: 1920/2.0 - 220.0, y: 1080/2.0 - 180.0)
+
+    def self.draw_ui
+      Rl.draw_circle_v(@@circle_vec)
+      Rl.draw_rectangle_rec(@@menubar,)
+    end
+
+  end
+end # -------------------------------------------------- end of module Moissanite::Window ----------------------------
 
 currentFrame  = 0
 frameSpeed    = 8
 
-# ------------------ Rectangle definitions ----------------------
-menubar = Rect.new(
-  x: 0.0,
-  y: 0.0,
-  width: 1920.0,
-  height: 40.0)
-
-statusbar = Rect.new(
-  x: 0.0,
-  y: screen_height - 20.0,
-  width: 1920.0,
-  height: 20.0)
-
-circle = Vec2.new(x: 1920/2.0 - 220.0, y: 1080/2.0 - 180.0)
-
 # ------------------- Virus Sprite Sources ---------------------------------------------------
-capsidVirus = Rl.load_image("resources/imgs/CapsidVirus/walk_cycle.png")
+capsidVirus = Rl.load_image()
 virusAnim   = Rl.load_texture_from_image(capsidVirus)
 
 virus_width  = virusAnim.width/3.0
@@ -71,10 +95,10 @@ until Rl.close_window?
 
     if Rl.key_down?(Key::Right)
       virusRec.x = virus_width * currentFrame
-      position.x += frameSpeed
+      position.x -= frameSpeed
     elsif Rl.key_down?(Key::Left)
       virusRec.x = virus_width * currentFrame
-      position.x -= frameSpeed
+      position.x += frameSpeed
     end
   end
 # ------- Begin Drawing Mode --------------------------------------------------------

@@ -8,10 +8,10 @@ targets:
   moissanite:
     main: src/moissanite.cr
 
-crystal: ">=1.11.2"
-
-license: MIT
-
 dependencies:
   raylib-cr:
     github: sol-vin/raylib-cr
+
+crystal: '>=1.12.1'
+
+license: MIT
